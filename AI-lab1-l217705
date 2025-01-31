@@ -1,0 +1,250 @@
+#greeting program
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+print(f"Hello, {name}! You are {age} years old.")
+
+#Data Type Identification
+
+user_input = input("Enter something: ")
+try:
+    int_value = int(user_input)
+    print(f"The data type is: {type(int_value)}")
+except ValueError:
+    try:
+        float_value = float(user_input)
+        print(f"The data type is: {type(float_value)}")
+    except ValueError:
+        print(f"The data type is: {type(user_input)}")
+
+#list of operations
+my_list = ["apple", "banana", "cherry"]
+my_list.append("orange")  
+my_list.remove("banana")  
+
+for item in my_list:
+    print(item.upper())  
+
+
+#Tuple Unpacking
+ my_tuple = (10, 20, 30, 40)
+a, b, *_ = my_tuple
+print(f"a = {a}, b = {b}")
+
+
+# Dictionary Management
+
+Copy
+students = {
+    "John": 85,
+    "Alice": 92,
+    "Bob": 78,
+    "Diana": 88,
+    "Steve": 91
+}
+print(students)
+
+# Set Operations
+Copy
+list1 = list(map(int, input("Enter integers for list 1: ").split()))
+list2 = list(map(int, input("Enter integers for list 2: ").split()))
+
+set1 = set(list1)
+set2 = set(list2)
+
+print("Union:", set1 | set2)
+print("Intersection:", set1 & set2)
+print("Difference:", set1 - set2)
+
+
+# Conditional Statements: Number Checker
+Copy
+number = int(input("Enter an integer: "))
+if number > 0:
+    print("The number is positive.")
+elif number < 0:
+    print("The number is negative.")
+else:
+    print("The number is zero.")
+
+if number % 2 == 0:
+    print("The number is even.")
+else:
+    print("The number is odd.")
+
+
+# FizzBuzz
+Copy
+for i in range(1, 51):
+    if i % 3 == 0 and i % 5 == 0:
+        print("FizzBuzz")
+    elif i % 3 == 0:
+        print("Fizz")
+    elif i % 5 == 0:
+        print("Buzz")
+    else:
+        print(i)
+
+
+# Factorial Calculator
+
+Copy
+def factorial(n):
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+
+num = int(input("Enter a non-negative integer: "))
+print(f"The factorial of {num} is {factorial(num)}.")
+
+
+# Prime Number Checker
+Copy
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+number = int(input("Enter a number to check if it's prime: "))
+if is_prime(number):
+    print(f"{number} is a prime number.")
+else:
+    print(f"{number} is not a prime number.")
+
+
+# List Comprehension: Squares
+
+Copy
+def square_numbers(numbers):
+    return [x**2 for x in numbers]
+
+nums = list(map(int, input("Enter a list of integers: ").split()))
+print(f"The squares of the numbers are: {square_numbers(nums)}")
+
+
+# Merge Dictionaries
+Copy
+dict1 = {"a": 1, "b": 2, "c": 3}
+dict2 = {"b": 4, "d": 5}
+
+merged_dict = {**dict1, **dict2}  # dict2 values overwrite dict1
+print(merged_dict)
+
+
+
+#Remove Duplicates from a List
+Copy
+def remove_duplicates(nums):
+    return list(dict.fromkeys(nums))  # Preserves order
+
+nums = list(map(int, input("Enter a list of integers: ").split()))
+print(f"List without duplicates: {remove_duplicates(nums)}")
+# Palindrome Checker
+
+Copy
+def is_palindrome(s):
+    s = s.replace(" ", "").lower()  # Ignore spaces and case
+    return s == s[::-1]
+
+word = input("Enter a string to check if it's a palindrome: ")
+if is_palindrome(word):
+    print(f"'{word}' is a palindrome.")
+else:
+    print(f"'{word}' is not a palindrome.")
+#Fibonacci Sequence Generator
+
+Copy
+def fibonacci(n):
+    fib_sequence = [0, 1]
+    for i in range(2, n):
+        fib_sequence.append(fib_sequence[-1] + fib_sequence[-2])
+    return fib_sequence
+
+num = int(input("Enter how many Fibonacci numbers to generate: "))
+print(fibonacci(num))
+
+
+# Average Calculator with Validation
+
+Copy
+def calculate_average():
+    numbers = []
+    while True:
+        user_input = input("Enter a number (or 'done' to finish): ")
+        if user_input.lower() == 'done':
+            break
+        try:
+            number = float(user_input)
+            numbers.append(number)
+        except ValueError:
+            print("Invalid input, please enter a number.")
+    if numbers:
+        print(f"The average is: {sum(numbers) / len(numbers)}")
+    else:
+        print("No numbers were entered.")
+
+calculate_average()
+
+
+# Nested Loops: Multiplication Table
+
+Copy
+for i in range(1, 11):
+    for j in range(1, 11):
+        print(f"{i * j:2}", end=" ")
+    print()
+# User Registration System
+python
+Copy
+users = {}
+
+def register():
+    username = input("Enter username: ")
+    password = input("Enter password: ")
+    users[username] = password
+    print("User registered successfully!")
+
+def login():
+    username = input("Enter username: ")
+    password = input("Enter password: ")
+    if users.get(username) == password:
+        print("Login successful!")
+    else:
+        print("Invalid credentials.")
+
+# Simulating registration and login
+register()
+login()
+19. Counting Elements with a Dictionary
+
+Copy
+words = input("Enter a list of words: ").split()
+word_count = {}
+
+for word in words:
+    word_count[word] = word_count.get(word, 0) + 1
+
+print(word_count)
+
+
+#Temperature Converter
+
+Copy
+def convert_temperature():
+    choice = input("Convert from (C)elsius or (F)ahrenheit? ").strip().lower()
+    if choice == 'c':
+        celsius = float(input("Enter temperature in Celsius: "))
+        fahrenheit = (celsius * 9/5) + 32
+        print(f"{celsius}°C is {fahrenheit}°F")
+    elif choice == 'f':
+        fahrenheit = float(input("Enter temperature in Fahrenheit: "))
+        celsius = (fahrenheit - 32) * 5/9
+        print(f"{fahrenheit}°F is {celsius}°C")
+    else:
+        print("Invalid choice.")
+
+convert_temperature()
+
